@@ -13,13 +13,12 @@
     
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js'></script>
 
 </head>
 
 <body>
 
-<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js'></script>
-<script type="text/javascript">
 
 <div id="content" class="container">
 <div id="map"></div>
@@ -31,7 +30,6 @@ L.tileLayer('http://{s}.tiles.mapbox.com/v4/rcastellanes.d1bd2cf7/{z}/{x}/{y}.pn
     maxZoom: 18
 }).addTo(map);
 
-</script>
 
 </body>
 </html>
