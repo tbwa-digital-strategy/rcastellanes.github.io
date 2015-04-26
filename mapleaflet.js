@@ -10,13 +10,11 @@ L.tileLayer( 'http://{s}.tiles.mapbox.com/v4/rcastellanes.d1bd2cf7/{z}/{x}/{y}.p
 var options = {
     data: {
         'dataPoint1': Math.random() * 20,
-        'dataPoint2': Math.random() * 20,
-        'dataPoint3': Math.random() * 20,
-        'dataPoint4': Math.random() * 20
+        'dataPoint2': Math.random() * 20
     },
     chartOptions: {
         'dataPoint1': {
-            fillColor: '#FEE5D9',
+            fillColor: '#f9a65a',
             minValue: 0,
             maxValue: 20,
             maxHeight: 20,
@@ -25,25 +23,7 @@ var options = {
             }
         },
         'dataPoint2': {
-            fillColor: '#FCAE91',
-            minValue: 0,
-            maxValue: 20,
-            maxHeight: 20,
-            displayText: function (value) {
-                return value.toFixed(2);
-            }
-        },
-        'dataPoint3': {
-            fillColor: '#FB6A4A',
-            minValue: 0,
-            maxValue: 20,
-            maxHeight: 20,
-            displayText: function (value) {
-                return value.toFixed(2);
-            }
-        },
-        'dataPoint4': {
-            fillColor: '#CB181D',
+            fillColor: '#9e66ab',
             minValue: 0,
             maxValue: 20,
             maxHeight: 20,
