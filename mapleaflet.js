@@ -11,6 +11,7 @@ var marker = new L.RegularPolygonMarker(new L.LatLng(40.7260493,-73.9917831), {
     numberOfSides: 3,
     rotation: 60.0,
     radius: 10
+    minZoom: 14
 });
 
 map.addLayer(marker);
