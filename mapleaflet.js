@@ -2,8 +2,8 @@
 
 var map = L.map( 'map', {
     center: [0,0],
-    minZoom: 4,
-    zoom: 18
+    minZoom: 2,
+    zoom: 2
 });
 
 L.tileLayer( 'http://{s}.tiles.mapbox.com/v4/rcastellanes.d1bd2cf7/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoicmNhc3RlbGxhbmVzIiwiYSI6IkVRd0dDaVEifQ.EsWXaa4BxE2qtGQ658rXqQ', {
