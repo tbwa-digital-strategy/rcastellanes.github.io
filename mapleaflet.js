@@ -7,12 +7,57 @@ L.tileLayer( 'http://{s}.tiles.mapbox.com/v4/rcastellanes.d1bd2cf7/{z}/{x}/{y}.p
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">MapBox</a>'
 }).addTo( map );
 
-var marker = new L.RegularPolygonMarker(new L.LatLng(40.7260493,-73.9917831), {
-    numberOfSides: 3,
-    rotation: 60.0,
-    radius: 10,
-    minZoom: 14
-});
+var options = {
+    data: {
+        'dataPoint1': Math.random() * 20,
+        'dataPoint2': Math.random() * 20,
+        'dataPoint3': Math.random() * 20,
+        'dataPoint4': Math.random() * 20
+    },
+    chartOptions: {
+        'dataPoint1': {
+            fillColor: '#FEE5D9',
+            minValue: 0,
+            maxValue: 20,
+            maxHeight: 20,
+            displayText: function (value) {
+                return value.toFixed(2);
+            }
+        },
+        'dataPoint2': {
+            fillColor: '#FCAE91',
+            minValue: 0,
+            maxValue: 20,
+            maxHeight: 20,
+            displayText: function (value) {
+                return value.toFixed(2);
+            }
+        },
+        'dataPoint3': {
+            fillColor: '#FB6A4A',
+            minValue: 0,
+            maxValue: 20,
+            maxHeight: 20,
+            displayText: function (value) {
+                return value.toFixed(2);
+            }
+        },
+        'dataPoint4': {
+            fillColor: '#CB181D',
+            minValue: 0,
+            maxValue: 20,
+            maxHeight: 20,
+            displayText: function (value) {
+                return value.toFixed(2);
+            }
+        }
+    },
+    weight: 1,
+    color: '#000000',
+    ... // Other L.Path style options
+}
+
+var marker = new L.BarChartMarker(new L.LatLng(40.7260493,-73.9917831), options);
 
 map.on('zoomend', function () {
 if (map.getZoom() < 15 && map.hasLayer(marker)) {
