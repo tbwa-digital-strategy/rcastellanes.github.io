@@ -12,17 +12,23 @@ L.tileLayer( 'http://{s}.tiles.mapbox.com/v4/rcastellanes.d1bd2cf7/{z}/{x}/{y}.p
 
 var myURL = jQuery( 'script[src$="leaf-demo.js"]' ).attr( 'src' ).replace( 'leaf-demo.js', '' );
 
-var myIcon = L.icon({
-    iconUrl: myURL + 'images/pin24.png',
-    iconRetinaUrl: myURL + 'images/pin48.png',
-    iconSize: [29, 24],
-    iconAnchor: [9, 21],
-    popupAnchor: [0, -14]
+var marker = new L.RegularPolygonMarker(new L.LatLng(40.7260493,-73.9917831), {
+    numberOfSides: 3,
+    rotation: 60.0,
+    radius: 10
 });
 
-for ( var i=0; i < markers.length; ++i ) 
-{
-   L.marker( [markers[i].lat, markers[i].lng], {icon: myIcon} )
-      .bindPopup( '<a href="' + markers[i].url + '" target="_blank">' + markers[i].name + '</a>' )
-      .addTo( map );
-}
+//var myIcon = L.icon({
+//    iconUrl: myURL + 'images/pin24.png',
+//   iconRetinaUrl: myURL + 'images/pin48.png',
+//    iconSize: [29, 24],
+//    iconAnchor: [9, 21],
+//    popupAnchor: [0, -14]
+//});
+
+//for ( var i=0; i < markers.length; ++i ) 
+//{
+//   L.marker( [markers[i].lat, markers[i].lng], {icon: myIcon} )
+//      .bindPopup( '<a href="' + markers[i].url + '" target="_blank">' + markers[i].name + '</a>' )
+//      .addTo( map );
+//}
