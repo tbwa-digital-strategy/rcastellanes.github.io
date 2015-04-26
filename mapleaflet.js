@@ -10,7 +10,7 @@ L.tileLayer( 'http://{s}.tiles.mapbox.com/v4/rcastellanes.d1bd2cf7/{z}/{x}/{y}.p
 var marker = new L.RegularPolygonMarker(new L.LatLng(40.7260493,-73.9917831), {
     numberOfSides: 3,
     rotation: 60.0,
-    radius: 10
+    radius: 10,
     minZoom: 14
 });
 
