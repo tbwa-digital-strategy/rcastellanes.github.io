@@ -18,6 +18,8 @@ var marker = new L.RegularPolygonMarker(new L.LatLng(40.7260493,-73.9917831), {
     radius: 10
 });
 
+map.addLayer(marker);
+
 //var myIcon = L.icon({
 //    iconUrl: myURL + 'images/pin24.png',
 //   iconRetinaUrl: myURL + 'images/pin48.png',
