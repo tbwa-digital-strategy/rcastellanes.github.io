@@ -14,9 +14,7 @@ var myURL = jQuery( 'script[src$="leaf-demo.js"]' ).attr( 'src' ).replace( 'leaf
 var marker = new L.RegularPolygonMarker(new L.LatLng(40.7260493,-73.9917831), {
     numberOfSides: 3,
     rotation: 60.0,
-    radius: 10,
-    // L.Path style options
-    ...
+    radius: 10
 });
 
 map.addLayer(marker);
