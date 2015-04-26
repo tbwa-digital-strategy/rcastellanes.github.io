@@ -15,10 +15,10 @@ var marker = new L.RegularPolygonMarker(new L.LatLng(40.7260493,-73.9917831), {
 });
 
 map.on('zoomend', function () {
-if (map.getZoom() > 15 && map.hasLayer(marker)) {
+if (map.getZoom() < 15 && map.hasLayer(marker)) {
     map.removeLayer(marker);
 }
-if (map.getZoom() < 15 && map.hasLayer(marker) == false)
+if (map.getZoom() > 15 && map.hasLayer(marker) == false)
 {
     map.addLayer(marker);
 }   
