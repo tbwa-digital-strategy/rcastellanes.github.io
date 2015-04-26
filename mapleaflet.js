@@ -53,8 +53,7 @@ var options = {
         }
     },
     weight: 1,
-    color: '#000000',
-    ... // Other L.Path style options
+    color: '#000000'
 }
 
 var marker = new L.BarChartMarker(new L.LatLng(40.7260493,-73.9917831), options);
