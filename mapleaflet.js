@@ -1,9 +1,8 @@
 // See post: http://asmaloney.com/2014/01/code/creating-an-interactive-map-with-leaflet-and-openstreetmap/
 
 var map = L.map( 'map', {
-    center: [0,0],
-    minZoom: 2,
-    zoom: 2
+    center: [40.7260493,-73.9917831],
+    zoom: 13
 });
 
 L.tileLayer( 'http://{s}.tiles.mapbox.com/v4/rcastellanes.d1bd2cf7/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoicmNhc3RlbGxhbmVzIiwiYSI6IkVRd0dDaVEifQ.EsWXaa4BxE2qtGQ658rXqQ', {
@@ -12,7 +11,7 @@ L.tileLayer( 'http://{s}.tiles.mapbox.com/v4/rcastellanes.d1bd2cf7/{z}/{x}/{y}.p
 
 var myURL = jQuery( 'script[src$="leaf-demo.js"]' ).attr( 'src' ).replace( 'leaf-demo.js', '' );
 
-var marker = new L.RegularPolygonMarker(new L.LatLng(0, 0), {
+var marker = new L.RegularPolygonMarker(new L.LatLng(40.7260493,-73.9917831), {
     numberOfSides: 3,
     rotation: 60.0,
     radius: 10,
