@@ -14,7 +14,7 @@ var options = {
     },
     chartOptions: {
         'dataPoint1': {
-            fillColor: '#f9a65a',
+            fillColor: '#727272',
             minValue: 0,
             maxValue: 20,
             maxHeight: 20,
@@ -23,7 +23,7 @@ var options = {
             }
         },
         'dataPoint2': {
-            fillColor: '#9e66ab',
+            fillColor: '#79c36a',
             minValue: 0,
             maxValue: 20,
             maxHeight: 20,
