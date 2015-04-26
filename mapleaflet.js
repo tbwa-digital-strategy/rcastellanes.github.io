@@ -22,6 +22,7 @@ if (map.getZoom() < 15 && map.hasLayer(marker) == false)
 {
     map.addLayer(marker);
 }   
+});
 
 //var myIcon = L.icon({
 //    iconUrl: myURL + 'images/pin24.png',
