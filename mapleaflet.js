@@ -14,7 +14,14 @@ var marker = new L.RegularPolygonMarker(new L.LatLng(40.7260493,-73.9917831), {
     minZoom: 14
 });
 
-map.addLayer(marker);
+map.on('zoomend', function () {
+if (map.getZoom() > 15 && map.hasLayer(marker)) {
+    map.removeLayer(marker);
+}
+if (map.getZoom() < 15 && map.hasLayer(marker) == false)
+{
+    map.addLayer(marker);
+}   
 
 //var myIcon = L.icon({
 //    iconUrl: myURL + 'images/pin24.png',
