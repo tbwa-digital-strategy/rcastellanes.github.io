@@ -36,7 +36,7 @@ var options = {
     color: '#000000'
 }
 
-var dataset = $.csv.toObjects(/data/centroidfile.csv);
+//var dataset = $.csv.toObjects(/data/centroidfile.csv);
 
 var marker = new L.BarChartMarker(new L.LatLng(40.7260493,-73.9917831), options);
 
