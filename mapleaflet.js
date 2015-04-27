@@ -36,19 +36,27 @@ var options = {
     color: '#000000'
 }
 
-//var dataset = $.csv.toObjects(/data/centroidfile.csv);
-
-var marker = new L.BarChartMarker(new L.LatLng(40.7260493,-73.9917831), options);
-
-map.on('zoomend', function () {
-if (map.getZoom() < 15 && map.hasLayer(marker)) {
-    map.removeLayer(marker);
-}
-if (map.getZoom() > 15 && map.hasLayer(marker) == false)
-{
-    map.addLayer(marker);
-}   
+$.get('http://rcastellanes.github.io/data/centroidnewfile.csv', function(data) {
+    mapData(data);
 });
+
+function mapData(data) {
+    debugger;
+    var dataset = $.csv.toObjects(data);
+
+    var marker = new L.BarChartMarker(new L.LatLng(40.7260493,-73.9917831), options);
+
+    map.on('zoomend', function () {
+	if (map.getZoom() < 15 && map.hasLayer(marker)) {
+	    map.removeLayer(marker);
+	}
+	if (map.getZoom() > 15 && map.hasLayer(marker) == false)
+	{
+	    map.addLayer(marker);
+	}   
+    });
+}
+
 
 //var myIcon = L.icon({
 //    iconUrl: myURL + 'images/pin24.png',
