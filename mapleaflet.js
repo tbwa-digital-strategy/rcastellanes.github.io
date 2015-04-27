@@ -36,6 +36,8 @@ var options = {
     color: '#000000'
 }
 
+var data = $.csv.toObjects(data/centroiddata.csv);
+
 var marker = new L.BarChartMarker(new L.LatLng(40.7260493,-73.9917831), options);
 
 map.on('zoomend', function () {
