@@ -35,7 +35,8 @@ var options = {
     weight: 1,
     color: '#000000'
 }
-//var dataset = $.csv.toObjects(data/centroiddata.csv);
+
+var dataset = $.csv.toObjects(data/centroiddata.csv);
 
 var marker = new L.BarChartMarker(new L.LatLng(40.7260493,-73.9917831), options);
 
