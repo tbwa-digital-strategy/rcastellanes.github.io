@@ -24,7 +24,6 @@ function mapData(data) {
 	    currentDataPoint.XCoord || currentDataPoint.YCoord) {
 	    continue;
 	}
-	    
 	
 	var options = {
 	    data: {
