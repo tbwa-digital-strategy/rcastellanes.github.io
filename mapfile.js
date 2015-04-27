@@ -1,6 +1,6 @@
 var map = L.map( 'map', {
     center: [40.7260493,-73.9917831],
-    zoom: 13
+    zoom: 15
 });
 
 L.tileLayer( 'http://{s}.tiles.mapbox.com/v4/rcastellanes.d1bd2cf7/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoicmNhc3RlbGxhbmVzIiwiYSI6IkVRd0dDaVEifQ.EsWXaa4BxE2qtGQ658rXqQ', {
@@ -22,8 +22,6 @@ function mapData(data) {
 	    !currentDataPoint.XCoord || !currentDataPoint.YCoord) {
 	    continue;
 	}
-
-	var maxVal = Math.max(currentDataPoint.BlockHeight, currentDataPoint.RoadbedDist);
 	
 	var options = {
 	    data: {
@@ -34,7 +32,7 @@ function mapData(data) {
 		'blockHeight': {
 		    fillColor: '#9e66ab',
 		    minValue: 0,
-		    maxValue: maxVal,
+		    maxValue: 10,
 		    maxHeight: 20,
 		    displayText: function (value) {
 			return value.toFixed(2);
@@ -43,7 +41,7 @@ function mapData(data) {
 		'roadbedDist': {
 		    fillColor: '#79c36a',
 		    minValue: 0,
-		    maxValue: maxVal,
+		    maxValue: 20,
 		    maxHeight: 20,
 		    displayText: function (value) {
 			return value.toFixed(2);
@@ -58,15 +56,15 @@ function mapData(data) {
 	map.addLayer(marker);
     }
 
-//    map.on('zoomend', function () {
-//	if (map.getZoom() < 15 && map.hasLayer(marker)) {
-//	    map.removeLayer(marker);
-//	}
-//	if (map.getZoom() > 15 && map.hasLayer(marker) == false)
-//	{
-//	    map.addLayer(marker);
-//	}   
-//    });
+    map.on('zoomend', function () {
+	if (map.getZoom() < 15 && map.hasLayer(marker)) {
+	    map.removeLayer(marker);
+	}
+	if (map.getZoom() > 15 && map.hasLayer(marker) == false)
+	{
+	    map.addLayer(marker);
+	}   
+    });
 }
 
 

@@ -13,15 +13,13 @@ $.get('http://rcastellanes.github.io/data/centroidnewfile.csv', function(data) {
 
 function mapData(data) {
     var dataset = $.csv.toObjects(data);
-    debugger;
-    
     var datasetLength = dataset.length;
     var marker;
     for (var i = 0; i < datasetLength; i++) {
 	var currentDataPoint = dataset[i];
 
-	if (currentDataPoint.BlockHeight || currentDataPoint.RoadbedDist ||
-	    currentDataPoint.XCoord || currentDataPoint.YCoord) {
+	if (!currentDataPoint.BlockHeight || !currentDataPoint.RoadbedDist ||
+	    !currentDataPoint.XCoord || !currentDataPoint.YCoord) {
 	    continue;
 	}
 	
@@ -34,7 +32,7 @@ function mapData(data) {
 		'blockHeight': {
 		    fillColor: '#9e66ab',
 		    minValue: 0,
-		    maxValue: 900,
+		    maxValue: 10,
 		    maxHeight: 20,
 		    displayText: function (value) {
 			return value.toFixed(2);
@@ -43,7 +41,7 @@ function mapData(data) {
 		'roadbedDist': {
 		    fillColor: '#79c36a',
 		    minValue: 0,
-		    maxValue: 160,
+		    maxValue: 20,
 		    maxHeight: 20,
 		    displayText: function (value) {
 			return value.toFixed(2);
@@ -55,17 +53,18 @@ function mapData(data) {
 	}
 	
 	marker = new L.BarChartMarker(new L.LatLng(currentDataPoint.YCoord,currentDataPoint.XCoord), options);
+	map.addLayer(marker);
     }
 
-    map.on('zoomend', function () {
-	if (map.getZoom() < 15 && map.hasLayer(marker)) {
-	    map.removeLayer(marker);
-	}
-	if (map.getZoom() > 15 && map.hasLayer(marker) == false)
-	{
-	    map.addLayer(marker);
-	}   
-    });
+//    map.on('zoomend', function () {
+//	if (map.getZoom() < 15 && map.hasLayer(marker)) {
+//	    map.removeLayer(marker);
+//	}
+//	if (map.getZoom() > 15 && map.hasLayer(marker) == false)
+//	{
+//	    map.addLayer(marker);
+//	}   
+//    });
 }
 
 
