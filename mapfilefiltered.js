@@ -1,8 +1,8 @@
 // Sets map
 
 var map = L.map( 'map', {
-    center: [40.7260493,-73.9917831],
-    zoom: 15
+    center: [40.7613292,-73.9834088],
+    zoom: 16
 });
 
 L.tileLayer( 'http://{s}.tiles.mapbox.com/v4/rcastellanes.d1bd2cf7/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoicmNhc3RlbGxhbmVzIiwiYSI6IkVRd0dDaVEifQ.EsWXaa4BxE2qtGQ658rXqQ', {
@@ -54,7 +54,7 @@ function mapData(data) {
 		    gradient: false,
 		    minValue: 0,
 		    maxValue: 30,
-		    maxHeight: 30,
+		    maxHeight: 100,
 		    displayText: function (value) {
 			return value.toFixed(0);
 		    }
