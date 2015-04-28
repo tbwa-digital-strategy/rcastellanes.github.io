@@ -7,7 +7,7 @@ L.tileLayer( 'http://{s}.tiles.mapbox.com/v4/rcastellanes.d1bd2cf7/{z}/{x}/{y}.p
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">MapBox</a>'
 }).addTo( map );
 
-$.get('http://rcastellanes.github.io/data/centroidnewfile.csv', function(data) {
+$.get('http://rcastellanes.github.io/data/newcentroidfile.csv', function(data) {
     mapData(data);
 });
 
