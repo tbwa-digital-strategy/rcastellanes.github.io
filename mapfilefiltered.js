@@ -14,7 +14,7 @@ var legendControl = new L.Control.Legend();
 legendControl.addTo(map);
 
 // Pulls data from the CSV
-$.get('http://rcastellanes.github.io/data/newcentroidfile.csv', function(data) {
+$.get('http://rcastellanes.github.io/data/newcentroidfileoptimized.csv', function(data) {
     mapData(data);
 });
 
