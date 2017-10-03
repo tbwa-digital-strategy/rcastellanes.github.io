@@ -5,7 +5,7 @@ body {
     width: 70%;
 }
 nav ul, footer ul {
-    font-family:'Lato', 'Arial', 'Sans-Serif';
+    font-family:'Lato', 'Helvetica', 'Sans-Serif';
     padding: 0px;
     list-style: none;
     font-weight: bold;
@@ -23,13 +23,13 @@ a:hover {
 }
 h1 {
     font-size: 3em;
-    font-family:'Lato', 'Arial', 'Sans-Serif';
+    font-family:'Lato', 'Helvetica', 'Sans-Serif';
 }
 p {
     font-size: 1.5em;
     line-height: 1.4em;
     color: #333;
-    font-family:'Lato', 'Arial', 'Sans-Serif';
+    font-family:'Lato', 'Helvetica', 'Sans-Serif';
 }
 footer {
     border-top: 1px solid #d5d5d5;
@@ -45,11 +45,11 @@ ul.posts li {
     list-style: none;
 }
 
+
 /**
 *** SIMPLE GRID
 *** (C) ZACH COLE 2016
 **/
-
 /* POSITIONING */
 
 .left {
@@ -74,7 +74,6 @@ ul.posts li {
 
 .container {
   width: 90%;
-  margin: auto;
   margin-left: auto;
   margin-right: auto;
 }
@@ -86,6 +85,7 @@ ul.posts li {
 
 .row [class^="col"] {
   float: left;
+  margin: 0.5rem 2%;
   min-height: 0.125rem;
 }
 
@@ -165,7 +165,6 @@ ul.posts li {
 @media only screen and (min-width: 33.75em) {  /* 540px */
   .container {
     width: 80%;
-    margin: auto;
   }
 }
 
@@ -225,9 +224,8 @@ ul.posts li {
 
 @media only screen and (min-width: 60em) { /* 960px */
   .container {
-    margin: auto;
     width: 75%;
-    max-width: 1140px;
+    max-width: 60rem;
   }
 }
 
