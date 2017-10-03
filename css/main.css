@@ -74,6 +74,7 @@ ul.posts li {
 
 .container {
   width: 90%;
+  margin: auto;
   margin-left: auto;
   margin-right: auto;
 }
@@ -165,6 +166,7 @@ ul.posts li {
 @media only screen and (min-width: 33.75em) {  /* 540px */
   .container {
     width: 80%;
+    margin: auto;
   }
 }
 
@@ -224,6 +226,7 @@ ul.posts li {
 
 @media only screen and (min-width: 60em) { /* 960px */
   .container {
+    margin: auto;
     width: 75%;
     max-width: 1140px;
   }
