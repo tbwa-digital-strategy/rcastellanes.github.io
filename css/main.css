@@ -22,14 +22,33 @@ a:hover {
     text-decoration: underline;
 }
 h1 {
-    font-size: 3em;
-    font-family:'Lato', 'Helvetica', 'Sans-Serif';
+  font-size: 2.5rem;
 }
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.375rem;
+}
+
+h4 {
+  font-size: 1.125rem;
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+h6 {
+  font-size: 0.875rem;
+}
+
 p {
-    font-size: 1.5em;
-    line-height: 1.4em;
-    color: #333;
-    font-family:'Lato', 'Helvetica', 'Sans-Serif';
+  font-size: 1.125rem;
+  font-weight: 200;
+  line-height: 1.8;
 }
 footer {
     border-top: 1px solid #d5d5d5;
