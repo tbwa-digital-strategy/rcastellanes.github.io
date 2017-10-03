@@ -12,6 +12,7 @@ nav ul, footer ul {
     padding: 0px;
     list-style: none;
     font-weight: bold;
+    margin: center;
 }
 nav ul li, footer ul li {
     display: inline;
@@ -22,7 +23,7 @@ html,
 body {
   height: 100%;
   width: 100%;
-  margin: 0;
+  margin: center;
   padding: 0;
   left: 0;
   top: 0;
