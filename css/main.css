@@ -148,6 +148,10 @@ input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
+footer ul li {
+    display: inline;
+    margin-right: 20px;
+}
 input {
   line-height: normal;
 }
