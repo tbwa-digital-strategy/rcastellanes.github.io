@@ -1,0 +1,27 @@
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+   <head profile="http://gmpg.org/xfn/11">
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+      <link rel="stylesheet" type="text/css" href="bootstrap.css" rel="stylesheet">      
+      <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
+      <script type='text/javascript' src='leaflet.js'></script>
+      <script src="jquery.csv-0.71.js"></script>
+      
+   </head>
+   
+   <body>
+      <h1>Sample</h1>
+      
+      <p></p>
+      <div class = "row">
+         <div class = "col-sm-3 center-block">
+            <p></p>
+            <input type="range" min="0" max="50" value="0" step="5" onchange="showValue(this.value)" />
+         </div>
+         <div class = "col-sm-8 text-left">
+            <div id="map" style="width: 600px; height: 560px; border: 1px solid #AAA;"></div>
+            <script type='text/javascript' src='mapfile.js'></script>
+         </div>
+      </div>
+   </body>
+</html>
