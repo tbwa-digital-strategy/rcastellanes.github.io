@@ -90,7 +90,7 @@
                var legendControl = new L.Control.Legend();
                legendControl.addTo(map);
                // Pulls data from the CSV
-               $.get('http://rcastellanes.github.io/projects/Capstone/App/datafile.csv', function(data) {mapData(data);
+               $.get('http://rcastellanes.github.io/projects/Capstone/App/data.csv', function(data) {mapData(data);
                });
                function mapData(data) {
                   var dataset = $.csv.toObjects(data);
