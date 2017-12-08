@@ -18,45 +18,62 @@
       
       <p></p>
       <div class = "row">
-         <div class = "col-sm-3 center-block">
-            <h3>Business Owner Factor Priority</h3>
-            <h4>Rate 1-5 each factor by importance (1 lowest, 5 highest)</h4>
-            <label for=Competition>Competition</label>
-            <input type=range min=1 max=5 value=3 id=Competition step=1 oninput="outputUpdate2(value)">
-            <output for=Competition id=vol2>3</output>
+         <div class = "col-sm-2 center-block">
+            <h4>Rate 1-5 each factor by importance (1 lowest, 5 highest)</h4>         
+            <p>Competition</p>
+            <input type=range min=1 max=5 value=3 id=ImpCompetition step=1 oninput="outputUpdate2(value)">
+            <output for=ImpCompetition id=imp1>3</output>
             <script>
                function outputUpdate2(vol) {
-                  document.querySelector('#vol2').value = vol;
-               }
-            </script>
-            </br>
-            <label for=Rent>Rent</label>
-            <input type=range min=1 max=5 value=3 id=Rent step=1 oninput="outputUpdate3(value)">
-            <output for=Rent id=vol3>3</output>
-            <script>
-               function outputUpdate3(vol) {
-                  document.querySelector('#vol3').value = vol;
-               }
-            </script>
-            </br>
-            <label for=Connectivity>Connectivity</label>
-            <input type=range min=1 max=5 value=3 id=Connectivity step=1 oninput="outputUpdate4(value)">
-            <output for=Connectivity id=vol4>3</output>
-            <script>
-               function outputUpdate4(vol) {
-                  document.querySelector('#vol4').value = vol;
+                  document.querySelector('#imp1').value = vol;
                }
             </script>
             </br>            
-            <label for=Price>Price</label>
-            <input type=range min=1 max=5 value=3 id=Price step=1 oninput="outputUpdate5(value)">
-            <output for=Price id=vol5>3</output>
+            <p>Rent</p>
+            <input type=range min=1 max=5 value=3 id=ImpRent step=1 oninput="outputUpdate3(value)">
+            <output for=ImpRent id=imp2>3</output>
             <script>
-               function outputUpdate5(vol) {
-                  document.querySelector('#vol5').value = vol;
+               function outputUpdate3(vol) {
+                  document.querySelector('#imp2').value = vol;
                }
             </script>
-            </br>
+            </br>            
+            <p>Connectivity</p>
+            <input type=range min=1 max=5 value=3 id=ImpConnectivity step=1 oninput="outputUpdate4(value)">
+            <output for=ImpConnectivity id=imp3>3</output>
+            <script>
+               function outputUpdate4(vol) {
+                  document.querySelector('#imp3').value = vol;
+               }
+            </script>
+            </br>            
+            <p>Price</p>
+            <input type=range min=1 max=5 value=3 id=ImpPrice step=1 oninput="outputUpdate5(value)">
+            <output for=ImpPrice id=imp4>3</output>
+            <script>
+               function outputUpdate5(vol) {
+                  document.querySelector('#imp4').value = vol;
+               }
+            </script>
+         </div>
+         <div class = "col-sm-2 text-left">
+            <h4>Assign weights to each of these factors. Weights should total 100%.</h4>
+            <p>CF Score</p>
+            <input type="number" placeholder="0.0" step="0.1" min="0" max="1" id="WtCFScore">
+            <output for=WtCFScore
+            <p>Competition</p>
+            <input type="number" placeholder="0.0" step="0.1" min="0" max="1" id="WtCompetition">
+            <p>Rent</p>
+            <input type="number" placeholder="0.0" step="0.1" min="0" max="1" id="WtRent">
+            <p>Connectivity</p>
+            <input type="number" placeholder="0.0" step="0.1" min="0" max="1" id="WtConnectivity">
+            <p>Price</p>
+            <input type="number" placeholder="0.0" step="0.1" min="0" max="1" id="WtPrice">
+            <p>Rating"/p>
+            <input type="number" placeholder="0.0" step="0.1" min="0" max="1" id="WtRating">
+            <p>Review</p>
+            <input type="number" placeholder="0.0" step="0.1" min="0" max="1" id="WtReview">
+            <input type="submit" value="submit" onclick="return mapData(data);" />
          </div>
          <div class = "col-sm-8 text-left">
             <div id="map" style="width: 600px; height: 800px; border: 1px solid #AAA;"></div>
@@ -66,40 +83,31 @@
                   center: [40.7613292,-73.9834088],
                   zoom: 12
                });
-
                L.tileLayer( 'http://{s}.tiles.mapbox.com/v4/rcastellanes.d1bd2cf7/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoicmNhc3RlbGxhbmVzIiwiYSI6IkVRd0dDaVEifQ.EsWXaa4BxE2qtGQ658rXqQ', {
                   attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">MapBox</a>'
                }).addTo( map );
-
                // Create control
                var legendControl = new L.Control.Legend();
                legendControl.addTo(map);
-
                // Pulls data from the CSV
                $.get('http://rcastellanes.github.io/projects/Capstone/App/datafile.csv', function(data) {mapData(data);
                });
-
                function mapData(data) {
                   var dataset = $.csv.toObjects(data);
                   var datasetLength = dataset.length;
                   var marker;
                   for (var i = 0; i < datasetLength; i++) {
                      var currentDataPoint = dataset[i];
-
                      // removes null variables
-
                      // if (!currentDataPoint.BlockHeight || !currentDataPoint.RoadbedDist || !currentDataPoint.XCoord || !currentDataPoint.YCoord) {
                      //    continue;
                      // }
-
                      // sets data point
-
                      var options = {
                         
                         data: {
                            'WeightedScore': currentDataPoint.uns_rank,
                         },
-
                         chartOptions: {
                            
                            'WeightedScore': {
@@ -116,7 +124,6 @@
                         weight: 1,
                         color: '#000000'
                      }
-
                      // sets data points to block centers
                      marker = new L.BarChartMarker(new L.LatLng(currentDataPoint.YCoord,currentDataPoint.XCoord), options);
                      map.addLayer(marker);
