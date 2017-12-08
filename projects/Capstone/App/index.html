@@ -106,7 +106,7 @@
                      var options = {
                         
                         data: {
-                           'WeightedScore': currentDataPoint.uns_rank,
+                           'WeightedScore': currentDataPoint.A1competition,
                         },
                         chartOptions: {
                            
@@ -114,7 +114,7 @@
                               fillColor: '#5DA5DA',
                               gradient: false,
                               minValue: 0,
-                              maxValue: 160,
+                              maxValue: 1,
                               maxHeight: 160,
                               displayText: function (value) {
                                  return value.toFixed(0);
