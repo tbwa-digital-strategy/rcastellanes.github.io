@@ -14,13 +14,49 @@
    </head>
    
    <body>
-      <h1>Sample</h1>
+      <h1>Best Location New Business App</h1>
       
       <p></p>
       <div class = "row">
          <div class = "col-sm-3 center-block">
-
-            <input type="range" min="0" max="50" value="0" step="5" onchange="showValue(this.value)" />
+            <h3>Business Owner Factor Priority</h3>
+            <h4>Rate 1-5 each factor by importance (1 lowest, 5 highest)</h4>
+            <label for=Competition>Competition</label>
+            <input type=range min=1 max=5 value=3 id=Competition step=1 oninput="outputUpdate2(value)">
+            <output for=Competition id=vol2>3</output>
+            <script>
+               function outputUpdate2(vol) {
+                  document.querySelector('#vol2').value = vol;
+               }
+            </script>
+            </br>
+            <label for=Rent>Rent</label>
+            <input type=range min=1 max=5 value=3 id=Rent step=1 oninput="outputUpdate3(value)">
+            <output for=Rent id=vol3>3</output>
+            <script>
+               function outputUpdate3(vol) {
+                  document.querySelector('#vol3').value = vol;
+               }
+            </script>
+            </br>
+            <label for=Connectivity>Connectivity</label>
+            <input type=range min=1 max=5 value=3 id=Connectivity step=1 oninput="outputUpdate4(value)">
+            <output for=Connectivity id=vol4>3</output>
+            <script>
+               function outputUpdate4(vol) {
+                  document.querySelector('#vol4').value = vol;
+               }
+            </script>
+            </br>            
+            <label for=Price>Price</label>
+            <input type=range min=1 max=5 value=3 id=Price step=1 oninput="outputUpdate5(value)">
+            <output for=Price id=vol5>3</output>
+            <script>
+               function outputUpdate5(vol) {
+                  document.querySelector('#vol5').value = vol;
+               }
+            </script>
+            </br>
          </div>
          <div class = "col-sm-8 text-left">
             <div id="map" style="width: 600px; height: 800px; border: 1px solid #AAA;"></div>
@@ -40,7 +76,7 @@
                legendControl.addTo(map);
 
                // Pulls data from the CSV
-               $.get('datafile.csv', function(data) {mapData(data);
+               $.get('http://rcastellanes.github.io/projects/Capstone/App/datafile.csv', function(data) {mapData(data);
                });
 
                function mapData(data) {
@@ -61,12 +97,12 @@
                      var options = {
                         
                         data: {
-                           'BlockHeight': currentDataPoint.uns_rank,
+                           'WeightedScore': currentDataPoint.uns_rank,
                         },
 
                         chartOptions: {
                            
-                           'BlockHeight': {
+                           'WeightedScore': {
                               fillColor: '#5DA5DA',
                               gradient: false,
                               minValue: 0,
