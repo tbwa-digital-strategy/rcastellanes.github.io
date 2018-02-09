@@ -10,6 +10,7 @@
       <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/leaflet-dvf/0.2/leaflet-dvf.markers.min.js'></script>
       <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/leaflet-dvf/0.2/leaflet-dvf.min.js'></script>
       <script src="jquery.csv-0.71.js"></script>
+      <script src="choropleth.js"></script>
       </script>
       
    </head>
@@ -19,7 +20,7 @@
       <p></p>
       <div class = "row">
             <!-- Trigger/Open The Modal -->
-            <!--<button id="myBtn">Open Modal</button>-->
+            <button id="myBtn">Open Modal</button>
             
             <!-- The Modal -->
             <div id="myModal" class="modal">
@@ -75,7 +76,7 @@
                 }
             }
          </script>
-         <div class="modal in">visible on page load.</div>
+         
       </div>
       <div class = "row">
 <!--         <div class = "col-sm-2 center-block">
@@ -136,6 +137,8 @@
             <input type="number" placeholder="0.0" step="0.1" min="0" max="1" id="WtReview">
             <input type="submit" value="submit" onclick="return mapData(data);" />
          </div>-->
+         <div class = "col-sm-2 text-left">
+         </div>
          <div class = "col-sm-8 text-left">   
             <div id="map" style="width: 600px; height: 800px; border: 1px solid #AAA;"></div>
             <script type='text/javascript'>
@@ -150,7 +153,7 @@
                var legendControl = new L.Control.Legend();
                legendControl.addTo(map);
                // Pulls data from the CSV
-               $.get('http://rcastellanes.github.io/projects/Capstone/App/data.csv', function(data) {mapData(data);
+               $.get('http://rcastellanes.github.io/projects/Capstone/App/datafile.csv', function(data) {mapData(data);
                });
                function mapData(data) {
                   var dataset = $.csv.toObjects(data);
@@ -168,7 +171,7 @@
                         
                         data: {
                            //var weightedscore = currentDataPoint.A1CF + currentDataPoint.A1subway + currentDataPoint.A1competition + currentDataPoint.A1rent + currentDataPoint.A1review + currentDataPoint.A1rating + currentDataPoint.A1price
-                           'WeightedScore': currentDataPoint.A1subway
+                           'WeightedScore': currentDataPoint.subway1
                         },
                         chartOptions: {
                            
@@ -177,7 +180,7 @@
                               gradient: false,
                               minValue: 0,
                               maxValue: 1,
-                              maxHeight: 160,
+                              maxHeight: 1,
                               displayText: function (value) {
                                  return value.toFixed(0);
                               }
