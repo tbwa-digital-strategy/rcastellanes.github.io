@@ -22,25 +22,11 @@
          <li><a href="#">Menu 2</a></li>
          <li><a href="#">Menu 3</a></li>
       </ul>
-            <select id = "mySelect">
-               <option value="PPF1112">Female 11-12</option>
-               <option value="PPF1826">Female 19-26</option>
-               <option value="PPM1112">Male 11-12</option>
-               <option value="PPM1826">Male 19-26</option>
-            </select>
-            <div id="map" style="width: 1200px; height: 500; border: 1px solid #AAA;"></div>
+
+            <div id="map" style="width: 800px; height: 500; border: 1px solid #AAA;"></div>
             <script type="text/javascript" src="countydata.js"></script>
             <script type="text/javascript">
-            
-            var x = document.getElementById("mySelect");
-            $('select').on('change', function() {
-               info.addTo(map);
-               
-               })
-            
-            var selection1 = 'props.'+x.value
-            var selection2 = 'feature.properties.'+x.value
-            
+                     
             var map = L.map( 'map', {
                 center: [39.171,-94.318],
                 zoom: 4
@@ -54,6 +40,18 @@
                   id: 'mapbox.light'
                }).addTo(map);;
             
+               var legend = L.control({position: 'topright'});
+                  legend.onAdd = function (map) {
+                      var div = L.DomUtil.create('div', 'info legend');
+                      div.innerHTML = '<select  id = "mySelect"><option value="PPF1112">Female 11-12</option><option value="PPF1826">Female 19-26</option><option value="PPM1112">Male 11-12</option><option value="PPM1826">Male 19-26</option></select>';
+                      div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
+                      return div;
+                  };
+                  legend.addTo(map);
+               
+               var x = document.getElementById("mySelect");
+               var selection1 = 'props.'+x.value
+               var selection2 = 'feature.properties.'+x.value               
             
                // control that shows state info on hover
                var info = L.control();
