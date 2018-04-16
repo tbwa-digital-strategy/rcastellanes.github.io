@@ -18,16 +18,16 @@ function getColor(d) {
         '#f7fbff';
 }
 
-function style(feature) {
+function style(features) {
     return {
-        fillColor: getColor(features.properties.targ1pp),
-        weight: 2,
-        opacity: 1,
-        color: 'white',
-        dashArray: '3',
-        fillOpacity: 0.7
+       weight: 2,
+       opacity: 1,
+       color: 'white',
+       dashArray: '3',
+       fillOpacity: 0.7,
+       fillColor: getColor(features.properties.density)
     };
-}
+ }
 
 var geojson = L.geoJson(countydata, {style: style,}).addTo(map);
 
