@@ -2641,6 +2641,12 @@ input[type="search"] {
 .form-group {
   margin-bottom: 15px;
 }
+
+.radioLeft input{
+    text-align: left;
+    display:inline;
+}
+
 .radio,
 .checkbox {
   position: relative;
