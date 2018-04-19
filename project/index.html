@@ -16,10 +16,8 @@
       <h4>Gardasil Metric Map</h4>
       <h4>
          <ul class="nav nav-tabs">
-            <li class="active"><a href="#">Metric Map</a></li>
-   <!--         <li><a href="#">Menu 1</a></li>
-            <li><a href="#">Menu 2</a></li>
-            <li><a href="#">Menu 3</a></li>-->
+            <li class="active"><a href="#">USA</a></li>
+            <li><a href="france.html">France</a></li>
          </ul>
       </h4>
             <select id = "mySex" >
@@ -188,9 +186,9 @@
                   }).addTo(map);
                   
                   info.update = function (props) {
-                     this._div.innerHTML = '<h4>TARGET POP PER COUNTY POP</h4><h5> INDEX EACH COUNTY</h5>' +  (props ?
+                     this._div.innerHTML = '<h4>COLORS INDEXED BY SELECTED PARAMS</h4>' +  (props ?
                         '<b>' + props.NAME + ' ' + props.STNAME + '</b><br />' + Math.round(eval(selection1)*1000)/1000
-                        : 'Hover over a county');d
+                        : 'Hover over a county');
                   };
             
                   info.addTo(map);          
