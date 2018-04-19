@@ -1,0 +1,57 @@
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+   <head profile="http://gmpg.org/xfn/11">
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+      <link rel="stylesheet" type="text/css" href="bootstrap.css">
+      <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
+      <script src="leaflet-src.js"></script>
+      <script type="text/javascript" src="dist/leaflet.ajax.js"></script>
+      <script src="spin.js"></script>
+      <script src="leaflet.spin.js"></script>
+      <h2>TBWA\Chiat\Day</h2>     
+   </head>
+   <body>
+
+      <h4>Gardasil Metric Map</h4>
+      <h4>
+         <ul class="nav nav-tabs">
+            <li class="active"><a href="#">Metric Map</a></li>
+   <!--         <li><a href="#">Menu 1</a></li>
+            <li><a href="#">Menu 2</a></li>
+            <li><a href="#">Menu 3</a></li>-->
+         </ul>
+      </h4>
+      <!-- Our food group drop down-->
+      <select id="foodgroups" onchange="selectFoods(this.options[this.selectedIndex].value)">
+          <option value="">Select a Food Group</option>
+          <option value="1">Fruit</option>
+          <option value="2">Vegetables</option>
+          <option value="3">Meat</option>
+          <option value="4">Dairy</option>
+          <option value="5">Grains</option>
+      </select>
+      <!-- Our foods for a group selection (empty on default) -->
+      <select id="foods"></select>
+      <script>
+      function selectFoods(foodGroup) {
+         // Get a reference to the foods select.
+         var foodsSelect = document.getElementById("foods");
+         // Create a two dimension array containing foods for each group.
+         var foods = [["Banana","Grapes","Oranges","Watermelon"],
+                     ["Brocolli", "Califlower","Spinach","Tomatoes"],
+                     ["Beef", "Chicken", "Turkey", "Tuna"],
+                     ["Cheese", "Ice Cream", "Milk", "Yogurt"],
+                     ["Bread", "Pasta", "Rice", "Quinoa"]];
+         if ((foodGroup >= 0) && (foodGroup <= foods.length)) {
+             foodsSelect.options.length = 0;
+             // Index was in range, so access our array and create options.
+             for (var i = 0; i < foods[foodGroup - 1].length; i++) {
+                foodsSelect.options[foodsSelect.options.length] = new Option(foods[foodGroup - 1][i], i);
+             }
+         }
+     }   
+      </script>
+      </h4>
+   </body>
+</html>

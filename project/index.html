@@ -22,13 +22,6 @@
             <li><a href="#">Menu 3</a></li>-->
          </ul>
       </h4>
-            <select id = "myPop" >
-               <option>Select Population</option>
-               <option value="OVERALL">Total Population</option>
-               <option value="LOWINCOME">Modeled Target</option>
-               <option value="LOWINSURED">Modeled Insured Target</option>
-            </select>
-      
             <select id = "mySex" >
                <option>Select Sex</option>
                <option value="BOTH">Both</option>
@@ -42,12 +35,22 @@
                <option value="1826">18-26</option>
             </select>
             
+            <select id = "myPop" >
+               <option>Select Population</option>
+               <option value="OVERALL">Total Population</option>
+               <option value="LOWINCOME">Modeled Target</option>
+               <option value="LOWINSURED">Modeled Insured Target</option>
+               <option value="DRSCORE">Doctor Score</option>
+               <option value="NODRSCORE">No Doctor Score</option>
+            </select>
+            
             <select id = "myRace">
                <option>Select Race</option>
                <option value="ALL">All Races</option>
                <option value="AA">African American</option>
                <option value="HISP">Hispanic</option>
                <option value="OTHER">Other</option>
+               <option value="">None</option>
             </select>
             <br></br>
             <p>   
@@ -187,7 +190,7 @@
                   info.update = function (props) {
                      this._div.innerHTML = '<h4>TARGET POP PER COUNTY POP</h4><h5> INDEX EACH COUNTY</h5>' +  (props ?
                         '<b>' + props.NAME + ' ' + props.STNAME + '</b><br />' + Math.round(eval(selection1)*1000)/1000
-                        : 'Hover over a county');
+                        : 'Hover over a county');d
                   };
             
                   info.addTo(map);          

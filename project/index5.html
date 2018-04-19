@@ -1,0 +1,227 @@
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+   <head profile="http://gmpg.org/xfn/11">
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+      <link rel="stylesheet" type="text/css" href="bootstrap.css">
+      <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
+      <script src="leaflet-src.js"></script>
+      <script type="text/javascript" src="dist/leaflet.ajax.js"></script>
+      <script src="spin.js"></script>
+      <script src="leaflet.spin.js"></script>
+      <h2>TBWA\Chiat\Day</h2>     
+   </head>
+   <body>
+
+      <h4>Gardasil Metric Map</h4>
+      <h4>
+         <ul class="nav nav-tabs">
+            <li class="active"><a href="#">Metric Map</a></li>
+   <!--         <li><a href="#">Menu 1</a></li>
+            <li><a href="#">Menu 2</a></li>
+            <li><a href="#">Menu 3</a></li>-->
+         </ul>
+      </h4>
+   
+         <select id = "mySex" >
+            <option>Select Sex</option>
+            <option value="BOTH">Both</option>
+            <option value="FEMALE">Female</option>
+            <option value="MALE">Male</option>
+         </select>
+         
+         <select id = "myAge" >
+            <option>Select Age Group</option>
+            <option value="1112">11-12</option>
+            <option value="1826">18-26</option>
+         </select>
+         
+         <select id = "myRace">
+            <option>Select Race</option>
+            <option value="ALL">All Races</option>
+            <option value="AA">African American</option>
+            <option value="HISP">Hispanic</option>
+            <option value="OTHER">Other</option>
+         </select>
+         
+         <select id = "myPop"  onchange="selectFoods(this.options[this.selectedIndex].value2)">
+            <option>Select Population</option>
+            <option value="OVERALL">Total Population</option>
+            <option value="INCOME">Modeled Target</option>
+            <option value="INSURED">Modeled Insured Target</option>
+            <option value="DRSCORE">Doctor Score</option>
+            <option value="NODRSCORE">No Doctor Score</option>
+         </select>
+         
+         <!-- Our foods for a group selection (empty on default) -->
+<!--         <select id="foods"></select>
+         <br></br>
+         <p>   
+            <button type="submit" class="btn btn-primary" onclick = "update()">Submit</button>               
+         </p>
+-->
+      <script>
+      function selectFoods(foodGroup) {
+         // Get a reference to the foods select.
+         var foodsSelect = document.getElementById("foods");
+         // Create a two dimension array containing foods for each group.
+         var foods = [["Select Race","ALL","AA","HISP","OTHER"],
+                      ["Select Race","ALL","AA","HISP","OTHER"],
+                      ["Select Race","ALL","AA","HISP","OTHER"],
+                      [""],
+                      [""]]
+         if ((foodGroup >= 0) && (foodGroup <= foods.length)) {
+             foodsSelect.options.length = 0;
+             // Index was in range, so access our array and create options.
+             for (var i = 0; i < foods[foodGroup - 1].length; i++) {
+                foodsSelect.options[foodsSelect.options.length] = new Option(foods[foodGroup - 1][i], i);
+             }
+         }
+      }   
+      </script>
+      <div id="map" style="width: 80%; height: 70%; border: 1px solid #AAA;"></div>
+               <script type="text/javascript" src="countydata.js"></script>
+               <script type="text/javascript">
+               var map = L.map( 'map', {
+                   center: [39.171,-94.318],
+                   zoom: 4.5
+               });
+               
+               L.tileLayer( 'https://api.mapbox.com/styles/v1/rcastellanes/cjftxvwef8m2o2rk3jirk1g1r/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmNhc3RlbGxhbmVzIiwiYSI6IkVRd0dDaVEifQ.EsWXaa4BxE2qtGQ658rXqQ', {
+                     maxZoom: 12,
+                     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+                        '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                        'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+                     id: 'mapbox.light'
+                  }).addTo(map);
+               
+               //$(window).on("resize", function() {$("#map").height($(window).height()).width($(window).width());
+               //map.invalidateSize();}).trigger("resize");
+            
+               // get color depending on population density value
+               function getColor(d) {
+                   return d > 0.0448 ? '#084594' :
+                       d > 0.0229 ? '#2171b5' :
+                       d > 0.0127 ? '#4292c6' :
+                       d > 0.0092 ? '#6baed6' :
+                       d > 0.0044 ? '#9ecae1' :
+                       d > 0.0017 ? '#c6dbef' :
+                       d > 0.0003 ? '#deebf7' :
+                       '#f7fbff';
+               }
+   
+               var legend = L.control({position: 'bottomright'});
+               
+               legend.onAdd = function (map) {
+            
+                  var div = L.DomUtil.create('div', 'info legend'),
+                     grades = [0, 0.0003, 0.0017, 0.0044, 0.0092, 0.0127, 0.0229, 0.0448],
+                     text = ['lowest', '', '', '', '', '', '', 'highest'],
+                     labels = [],
+                     from, to;
+            
+                  for (var i = 0; i < grades.length; i++) {
+                     from = grades[i];
+                     to = grades[i + 1];
+            
+                     labels.push(
+                        '<i style="background:' + getColor(from + 0.001) + '"></i> ' +
+                        text[i]);
+                  }
+            
+                  div.innerHTML = labels.join('<br>');
+                  return div;
+               
+                  // control that shows state info on hover   
+               
+               };
+            
+               legend.addTo(map);
+               
+                  var info = L.control();
+                  
+               info.onAdd = function (map) {
+                  this._div = L.DomUtil.create('div', 'info');
+                  this.update();
+                  return this._div;
+               };         
+                        
+            </script>
+            <script>
+               function update() {
+                  var cntrol = $(this);
+                  var x1 = document.getElementById("myPop");
+                  var x2 = document.getElementById("mySex");
+                  var x3 = document.getElementById("myAge");
+                  var x4 = document.getElementById("myRace");
+                  var x5 = document.getElementById("foods");
+                  var selection1 = 'props.VOL'+x1.value+x2.value+x3.value+x4.value2+x5.text;
+                  var selection2 = 'feature.properties.NORM'+x1.value+x2.value+x3.value+x4.value2;
+               
+                  function style(feature) {
+                     return {
+                        weight: 0.5,
+                        opacity: 0.5,
+                        color: 'gray',
+                        dashArray: '',
+                        fillOpacity: 0.7,
+                        fillColor: getColor(eval(selection2))
+                     }
+                  }
+               
+                  function highlightFeature(e) {
+                     var layer = e.target;
+               
+                     layer.setStyle({
+                        weight: 2,
+                        color: '#666',
+                        dashArray: '',
+                        fillOpacity: 0.7
+                     });
+               
+                     if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                        layer.bringToFront();
+                     }
+               
+                     info.update(layer.feature.properties);
+                  }
+               
+                  var geojson;
+               
+                  function resetHighlight(e) {
+                     geojson.resetStyle(e.target);
+                     info.update();
+                  }
+               
+                  function zoomToFeature(e) {
+                     map.fitBounds(e.target.getBounds());
+                  }
+               
+                  function onEachFeature(feature, layer) {
+                     layer.on({
+                        mouseover: highlightFeature,
+                        mouseout: resetHighlight,
+                        click: zoomToFeature
+                     });
+                  }
+               
+                  geojson = L.geoJson(countydata, {
+                     style: style,
+                     onEachFeature: onEachFeature
+                  }).addTo(map);
+                  
+                  info.update = function (props) {
+                     this._div.innerHTML = '<h4>TARGET POP PER COUNTY POP</h4><h5> INDEX EACH COUNTY</h5>' +  (props ?
+                        '<b>' + props.NAME + ' ' + props.STNAME + '</b><br />' + selection1
+                        : 'Hover over a county');
+                  };
+            
+                  info.addTo(map);          
+               
+                  map.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');
+               }
+            </script>
+         </div>
+      </h4>
+   </body>
+</html>
