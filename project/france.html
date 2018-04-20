@@ -75,7 +75,7 @@
                legend.onAdd = function (map) {
             
                   var div = L.DomUtil.create('div', 'info legend'),
-                     grades = [0, 0.0003, 0.0017, 0.0044, 0.0092, 0.0127, 0.0229, 0.0448],
+                     grades = [0, 0.0466, 0.0884, 0.1232, 0.1824, 0.2314, 0.2863, 0.4827],
                      text = ['lowest', '', '', '', '', '', '', 'highest'],
                      labels = [],
                      from, to;
@@ -169,7 +169,7 @@
                   
                   info.update = function (props) {
                      this._div.innerHTML = '<h4>COLORS INDEXED BY SELECTED PARAMS</h4>' +  (props ?
-                        '<b>' + props.NUTS_NAME + '</b><br />' + Math.round(eval(selection1)*1000)/1000
+                        '<b>' + props.NUTS_NAME + '</b><br />' + Math.round(eval(selection1)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
                         : 'Hover over a departement');
                   };
             

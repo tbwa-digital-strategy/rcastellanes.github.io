@@ -187,7 +187,7 @@
                   
                   info.update = function (props) {
                      this._div.innerHTML = '<h4>COLORS INDEXED BY SELECTED PARAMS</h4>' +  (props ?
-                        '<b>' + props.NAME + ' ' + props.STNAME + '</b><br />' + Math.round(eval(selection1)*1000)/1000
+                        '<b>' + props.NAME + ' ' + props.STNAME + '</b><br />' + Math.round(eval(selection1)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
                         : 'Hover over a county');
                   };
             
